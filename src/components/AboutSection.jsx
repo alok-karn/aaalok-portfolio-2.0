@@ -1,5 +1,8 @@
 import React, { useState, useRef, useEffect, useMemo } from "react";
 import "../styles/aboutSection.scss";
+import { Bounce } from "react-awesome-reveal";
+import "animate.css";
+import MY_DP from "../assets/imgs/undefined-transformed.png";
 
 const AboutSection = () => {
     const [isHovering, setIsHovering] = useState(false);
@@ -7,17 +10,17 @@ const AboutSection = () => {
     const timerIdRef = useRef(null);
 
     const programmingLanguages = useMemo(
-        () => ["JS", "HTML5", "SCSS", "CSS3", "ReactJs", "Node.js"],
+        () => ["JavaScript", "HTML5", "SCSS", "CSS3", "ReactJs", "Node.js"],
         []
     );
 
     const languageColors = {
-        JS: "#f7df1e",
+        JavaScript: "#edda42",
         HTML5: "#e34c26",
-        SCSS: "#c69",
+        SCSS: "#ed53a0",
         CSS3: "#1572b6",
-        ReactJs: "#61dafb",
-        "Node.js": "#68a063",
+        ReactJs: "#219dbf",
+        "Node.js": "#48ab3f",
     };
 
     const currentLanguage = useMemo(
@@ -54,21 +57,30 @@ const AboutSection = () => {
 
     return (
         <div className="about_container">
-            <h1>
-                Bringing ideas to life through{" "}
-                <span
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                    style={{
-                        cursor: "pointer",
-                        color: isHovering
-                            ? languageColors[currentLanguage]
-                            : "transparent",
-                    }}>
-                    {isHovering ? currentLanguage : "code"}
-                </span>{" "}
-                and design
-            </h1>
+            <Bounce>
+                <h1>
+                    Bringing ideas to life through <br />
+                    <span
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        style={{
+                            color: isHovering
+                                ? languageColors[currentLanguage]
+                                : "#161616",
+                            fontSize: isHovering ? "2.5rem" : "3rem",
+                            transition: "all 0.5s ease",
+                        }}>
+                        {isHovering ? currentLanguage : "code"}
+                    </span>{" "}
+                    and design
+                </h1>
+            </Bounce>
+
+            <div className="my_info_container">
+                <div className="image_container">
+                    <img src={MY_DP} alt="my-profile" />
+                </div>
+            </div>
         </div>
     );
 };

@@ -55,7 +55,8 @@
 
         &:hover{
             mix-blend-mode: difference;
-            color: black;
+            -webkit-text-stroke: 1px rgb(126, 81, 221);
+            color: transparent;
         }
     }
 

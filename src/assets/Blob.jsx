@@ -1,11 +1,11 @@
 import React from "react";
 import "./blob.css";
-
+import "animate.css";
 const Blob = () => {
     return (
         <div>
             <svg
-                className="blob_1"
+                className="blob_1 animate__animated animate__headShake animate__repeat-3"
                 id="generatedsvg"
                 viewBox="0 0 200 200"
                 xmlns="http://www.w3.org/2000/svg"

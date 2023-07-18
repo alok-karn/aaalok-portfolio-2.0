@@ -7,6 +7,7 @@ import Jump from "react-reveal/Jump";
 import Zoom from "react-reveal/Zoom";
 import { useState, useEffect, useMemo } from "react";
 import Blob from "../assets/Blob";
+import "animate.css";
 
 const HeroSection = () => {
     //   const jsonData = `res.status(200).json({
@@ -74,7 +75,7 @@ const HeroSection = () => {
                     {`👋, I'm Alok Karn and I'm a`}
                 </p>
             </Jump>
-            <h1 className="main_line">
+            <h1 className="main_line animate__animated animate__tada">
                 <span
                     className="span-1"
                     onMouseEnter={() => handleHover("span1")}>
