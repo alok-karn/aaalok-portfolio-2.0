@@ -77,9 +77,9 @@ const AboutSection = () => {
             </Bounce>
 
             <div className="my_info_container">
-                <div className="image_container">
+                {/* <div className="image_container">
                     <img src={MY_DP} alt="my-profile" />
-                </div>
+                </div> */}
             </div>
         </div>
     );

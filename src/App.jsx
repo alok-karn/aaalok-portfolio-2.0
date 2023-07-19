@@ -1,5 +1,3 @@
-"use client";
-
 import Contact from "../src/components/Contact";
 import HeroSection from "../src/components/HeroSection";
 import NavBar from "../src/components/NavBar";
@@ -8,6 +6,9 @@ import AnimatedCursor from "react-animated-cursor";
 import colors from "../src/assets/colors";
 import AboutSection from "../src/components/AboutSection";
 import "./App.scss";
+import PdfViewer from "./components/PdfViewer";
+
+import pdf from "../src/assets/pdfs/Resume_ALOK.pdf";
 
 const App = () => {
     const homeRef = useRef(null); // eslint-disable-line
@@ -29,6 +30,16 @@ const App = () => {
         const randomColors = colors[randomIndex];
         setSelectedColors(randomColors);
     }, []);
+
+    const [showPdf, setShowPdf] = useState(false);
+
+    const handleMouseEnter = () => {
+        setShowPdf(true);
+    };
+
+    const handleMouseLeave = () => {
+        setShowPdf(false);
+    };
 
     return (
         <div className="main">
@@ -66,6 +77,14 @@ const App = () => {
             {showContact && <Contact onClose={handleCloseContact} />}
             <HeroSection />
             <AboutSection />
+
+            <button
+                type="submit"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}>
+                Hover me
+            </button>
+            <PdfViewer pdfUrl={pdf} visible={showPdf} />
         </div>
     );
 };
