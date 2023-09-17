@@ -2,7 +2,8 @@ import React, { useState, useRef, useEffect, useMemo } from "react";
 import "../styles/aboutSection.scss";
 import { Bounce } from "react-awesome-reveal";
 import "animate.css";
-import MY_DP from "../assets/imgs/undefined-transformed.png";
+// import MY_DP from "../assets/imgs/undefined-transformed.png";
+import SectionTitle from "./SectionTitle";
 
 const AboutSection = () => {
     const [isHovering, setIsHovering] = useState(false);
@@ -80,6 +81,9 @@ const AboutSection = () => {
                 {/* <div className="image_container">
                     <img src={MY_DP} alt="my-profile" />
                 </div> */}
+
+                {/* <h1>Hi, there!</h1> */}
+                {/* <SectionTitle title="HEY THERE" subtitle="my name is alok" /> */}
             </div>
         </div>
     );

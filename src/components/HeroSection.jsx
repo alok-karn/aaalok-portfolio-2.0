@@ -8,6 +8,7 @@ import Zoom from "react-reveal/Zoom";
 import { useState, useEffect, useMemo } from "react";
 import Blob from "../assets/Blob";
 import "animate.css";
+import HeroParticle from "./Particles/HeroParticle";
 
 const HeroSection = () => {
     //   const jsonData = `res.status(200).json({
@@ -67,11 +68,14 @@ const HeroSection = () => {
     };
 
     return (
-        <div className="container">
+        <div id="hero" className="container">
+            {/* <HeroParticle /> */}
             <Blob />
             <Jump>
                 <p className="sub-heading">
-                    <span>{currentContent}</span>
+                    <span className="font-bold text-gray-700">
+                        {currentContent}
+                    </span>
                     {`👋, I'm Alok Karn and I'm a`}
                 </p>
             </Jump>

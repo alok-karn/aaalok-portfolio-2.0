@@ -1,7 +1,10 @@
 import { HeartHandshake } from "lucide-react";
 import "../styles/navbar.scss";
-import { useEffect, useRef } from "react";
-const NavBar = ({ onContactClick }) => {
+import { useState, useEffect, useRef } from "react";
+
+import PopupInfo from "./PopupInfo";
+
+const NavBar = ({ onContactClick, onMenuClick }) => {
     // const homeRef = useRef(null);
 
     // const scrollToRef = (ref) => {
@@ -14,27 +17,42 @@ const NavBar = ({ onContactClick }) => {
     //     scrollToRef(homeRef);
     // }, []);
 
+    const [showPopup, setShowPopup] = useState(false);
+
     return (
         <nav>
-            <p className="icon">ALOK</p>
+            <p
+                className="icon"
+                onClick={() => onMenuClick("ALOK | PORTFOLIO")}
+                onMouseEnter={() => setShowPopup(true)}
+                onMouseLeave={() => setShowPopup(false)}>
+                ALOK
+            </p>
             <ul>
-                <li className="link">
-                    <a href="#">Home</a>
+                <li className="link" onClick={() => onMenuClick("HOME")}>
+                    <a href="/#">Home</a>
                 </li>
-                <li className="link">
-                    <a href="#">About</a>
+                <li className="link" onClick={() => onMenuClick("ABOUT")}>
+                    <a href="/#">About</a>
                 </li>
-                <li className="link">
-                    <a href="#">Projects</a>
+                <li className="link" onClick={() => onMenuClick("PROJECTS")}>
+                    <a href="/#">Projects</a>
                 </li>
-                <li className="link">
-                    <a href="#">Services</a>
+                <li className="link" onClick={() => onMenuClick("SERVICES")}>
+                    <a href="/#">Services</a>
                 </li>
                 <li className="link" onClick={onContactClick}>
                     <a href="#">
                         Contact <HeartHandshake />
                     </a>
                 </li>
+                {showPopup && (
+                    <PopupInfo
+                        show={showPopup}
+                        // info=""
+                        // onClose={() => setShowPopup(false)}
+                    />
+                )}
                 <div className="line"></div>
             </ul>
         </nav>

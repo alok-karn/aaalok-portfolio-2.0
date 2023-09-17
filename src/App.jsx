@@ -6,9 +6,9 @@ import AnimatedCursor from "react-animated-cursor";
 import colors from "../src/assets/colors";
 import AboutSection from "../src/components/AboutSection";
 import "./App.scss";
-import PdfViewer from "./components/PdfViewer";
+// import PdfViewer from "./components/PdfViewer";
 
-import pdf from "../src/assets/pdfs/Resume_ALOK.pdf";
+// import pdf from "../src/assets/pdfs/Resume_ALOK.pdf";
 
 const App = () => {
     const homeRef = useRef(null); // eslint-disable-line
@@ -31,14 +31,24 @@ const App = () => {
         setSelectedColors(randomColors);
     }, []);
 
-    const [showPdf, setShowPdf] = useState(false);
+    // const [showPdf, setShowPdf] = useState(false);
 
-    const handleMouseEnter = () => {
-        setShowPdf(true);
-    };
+    // const handleMouseEnter = () => {
+    //     setShowPdf(true);
+    // };
 
-    const handleMouseLeave = () => {
-        setShowPdf(false);
+    // const handleMouseLeave = () => {
+    //     setShowPdf(false);
+    // };
+
+    const [pageTitle, setPageTitle] = useState("ALOK | PORTFOLIO");
+
+    useEffect(() => {
+        document.title = pageTitle;
+    }, [pageTitle]);
+
+    const handleMenuTitle = (title) => {
+        setPageTitle(title);
     };
 
     return (
@@ -73,18 +83,21 @@ const App = () => {
                 />
             </div>
 
-            <NavBar onContactClick={handleContactClick} />
+            <NavBar
+                onContactClick={handleContactClick}
+                onMenuClick={handleMenuTitle}
+            />
             {showContact && <Contact onClose={handleCloseContact} />}
             <HeroSection />
             <AboutSection />
-
+            {/* 
             <button
                 type="submit"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}>
                 Hover me
             </button>
-            <PdfViewer pdfUrl={pdf} visible={showPdf} />
+            <PdfViewer pdfUrl={pdf} visible={showPdf} /> */}
         </div>
     );
 };

@@ -42,11 +42,12 @@ const TextArea = styled.textarea`
     padding: 8px;
     width: 100%;
     border-radius: 4px;
-    border: 1px solid #ccc;
+    // border: 1px solid #ccc;
+    outline-color: #ffcd6d;
     background-color: #fff;
     color: rgb(32, 32, 32);
     ::placeholder {
-        color: rgb(32, 32, 32, 0.5);
+        color: rgba(32, 32, 32, 0.5);
     }
 `;
 
