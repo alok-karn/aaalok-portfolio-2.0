@@ -1,6 +1,8 @@
-import { XCircle } from "lucide-react";
-import React, { useState } from "react";
+import { Send, XCircle } from "lucide-react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
+
+import emailjs from "@emailjs/browser";
 
 const PopupBoxContainer = styled.div`
     position: fixed;
@@ -59,11 +61,15 @@ const SubmitButton = styled.button`
     color: rgb(32, 32, 32);
     cursor: pointer;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
     z-index: 9999;
 
-    :hover {
-        background: red;
-    }
+    /* :hover {
+        background-color: red;
+    } */
 `;
 
 const CloseButton = styled.button`
@@ -89,10 +95,32 @@ const Contact = ({ onClose }) => {
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
 
+    const [isSent, setIsSent] = useState(false);
+    const form = useRef();
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
         // Perform the necessary actions with the form data (e.g., send email, store in database)
+
+        emailjs
+            .sendForm(
+                "service_1lawyoh",
+                "template_lpw7uh3",
+                form.current,
+                "zHGUpt4DCaixhk0i5"
+            )
+            .then(
+                (result) => {
+                    document.getElementById("contact_form").reset();
+                    setIsSent(true);
+                    alert("Message sent successfully! 😄");
+                },
+                (error) => {
+                    console.error(error);
+                    setIsSent(false);
+                }
+            );
 
         // Clear the form fields
         setName("");
@@ -107,11 +135,17 @@ const Contact = ({ onClose }) => {
                 <XCircle size={48} />{" "}
             </CloseButton>
             <ContactFormContainer>
-                <form onSubmit={handleSubmit}>
+                <form
+                    onSubmit={handleSubmit}
+                    id="contact_form"
+                    ref={form}
+                    method="POST"
+                    target="_blank">
                     <Label htmlFor="name">Name</Label>
                     <InputField
                         type="text"
                         id="name"
+                        name="from_name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Enter your name"
@@ -122,6 +156,7 @@ const Contact = ({ onClose }) => {
                     <InputField
                         type="email"
                         id="email"
+                        name="from_email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter your email"
@@ -131,12 +166,16 @@ const Contact = ({ onClose }) => {
                     <Label htmlFor="message">Message</Label>
                     <TextArea
                         id="message"
+                        name="message"
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         placeholder="Type your message"
                         required></TextArea>
 
-                    <SubmitButton type="submit">Submit</SubmitButton>
+                    <SubmitButton type="submit">
+                        <p>Send</p>
+                        <Send size={22} />
+                    </SubmitButton>
                 </form>
             </ContactFormContainer>
         </PopupBoxContainer>
