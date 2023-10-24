@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/aaalok-portfolio-2.0/static/css/main.966305a0.css",
-    "main.js": "/aaalok-portfolio-2.0/static/js/main.e26049e0.js",
+    "main.css": "/aaalok-portfolio-2.0/static/css/main.372152fd.css",
+    "main.js": "/aaalok-portfolio-2.0/static/js/main.2f6a8843.js",
     "static/js/787.ff16b969.chunk.js": "/aaalok-portfolio-2.0/static/js/787.ff16b969.chunk.js",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/aaalok-portfolio-2.0/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
     "static/media/fontawesome-webfont.eot": "/aaalok-portfolio-2.0/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
@@ -10,12 +10,12 @@
     "static/media/fontawesome-webfont.woff2?v=4.7.0": "/aaalok-portfolio-2.0/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
     "static/media/myImg.jpg": "/aaalok-portfolio-2.0/static/media/myImg.2cb3b360752a585c8442.jpg",
     "index.html": "/aaalok-portfolio-2.0/index.html",
-    "main.966305a0.css.map": "/aaalok-portfolio-2.0/static/css/main.966305a0.css.map",
-    "main.e26049e0.js.map": "/aaalok-portfolio-2.0/static/js/main.e26049e0.js.map",
+    "main.372152fd.css.map": "/aaalok-portfolio-2.0/static/css/main.372152fd.css.map",
+    "main.2f6a8843.js.map": "/aaalok-portfolio-2.0/static/js/main.2f6a8843.js.map",
     "787.ff16b969.chunk.js.map": "/aaalok-portfolio-2.0/static/js/787.ff16b969.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.966305a0.css",
-    "static/js/main.e26049e0.js"
+    "static/css/main.372152fd.css",
+    "static/js/main.2f6a8843.js"
   ]
 }
