@@ -9,6 +9,7 @@ import { useState, useEffect, useMemo } from "react";
 import Blob from "../assets/Blob";
 import "animate.css";
 import HeroParticle from "./Particles/HeroParticle";
+import { ToastContainer, toast } from "react-toastify";
 
 const HeroSection = () => {
     //   const jsonData = `res.status(200).json({
@@ -18,6 +19,18 @@ const HeroSection = () => {
     //       message: 'Meet a geeky guy!👨 and tech enthusiast 🧑‍💻',
     //     },
     //   })`;
+
+    // const notify = () =>
+    //     toast("🦄 Wow so easy!", {
+    //         position: "top-right",
+    //         autoClose: 5000,
+    //         hideProgressBar: false,
+    //         closeOnClick: true,
+    //         pauseOnHover: true,
+    //         draggable: true,
+    //         progress: undefined,
+    //         theme: "light",
+    //     });
 
     const [content, setContent] = useState({
         span1: "Web",
@@ -70,6 +83,7 @@ const HeroSection = () => {
     return (
         <div id="hero" className="container">
             {/* <HeroParticle /> */}
+
             <Blob />
             <Jump>
                 <p className="sub-heading">

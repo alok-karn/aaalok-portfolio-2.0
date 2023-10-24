@@ -3,6 +3,129 @@ import React, { useState, useRef } from "react";
 import styled from "styled-components";
 
 import emailjs from "@emailjs/browser";
+// import { ToastContainer, toast } from "react-toastify";
+import Toastify from "toastify-js";
+import "toastify-js/src/toastify.css";
+
+const Contact = ({ onClose }) => {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [message, setMessage] = useState("");
+
+    const [isSent, setIsSent] = useState(false);
+    const form = useRef();
+
+    // const notify = () =>
+    //     toast("🦄 Wow so easy!", {
+    //         position: "top-right",
+    //         autoClose: 5000,
+    //         hideProgressBar: false,
+    //         closeOnClick: true,
+    //         pauseOnHover: true,
+    //         draggable: true,
+    //         progress: undefined,
+    //         theme: "light",
+    //     });
+
+    const toastNotification = () =>
+        Toastify({
+            text: "Message sent successfully! 😄",
+            duration: 3000,
+
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+                background: "linear-gradient(to right, #8c40be, #af31c9)",
+            },
+            onClick: function () {}, // Callback after click
+        }).showToast();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        emailjs
+            .sendForm(
+                "service_1lawyoh",
+                "template_lpw7uh3",
+                form.current,
+                "zHGUpt4DCaixhk0i5"
+            )
+            .then(
+                (result) => {
+                    document.getElementById("contact_form").reset();
+                    setIsSent(true);
+                    // alert("Message sent successfully! 😄");
+                    toastNotification();
+                    // notify();
+                },
+                (error) => {
+                    console.error(error);
+                    setIsSent(false);
+                }
+            );
+
+        // Clear the form fields
+        setName("");
+        setEmail("");
+        setMessage("");
+    };
+
+    return (
+        <PopupBoxContainer>
+            <CloseButton onClick={onClose}>
+                {" "}
+                <XCircle size={48} />{" "}
+            </CloseButton>
+            <ContactFormContainer>
+                <form
+                    onSubmit={handleSubmit}
+                    id="contact_form"
+                    ref={form}
+                    method="POST"
+                    target="_blank">
+                    <Label htmlFor="name">Name</Label>
+                    <InputField
+                        type="text"
+                        id="name"
+                        name="from_name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Enter your name"
+                        required
+                    />
+
+                    <Label htmlFor="email">Email</Label>
+                    <InputField
+                        type="email"
+                        id="email"
+                        name="from_email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Enter your email"
+                        required
+                    />
+
+                    <Label htmlFor="message">Message</Label>
+                    <TextArea
+                        id="message"
+                        name="message"
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        placeholder="Type your message"
+                        required></TextArea>
+
+                    <SubmitButton type="submit">
+                        <p>Send</p>
+                        <Send size={22} />
+                    </SubmitButton>
+                </form>
+            </ContactFormContainer>
+        </PopupBoxContainer>
+    );
+};
 
 const PopupBoxContainer = styled.div`
     position: fixed;
@@ -89,97 +212,5 @@ const CloseButton = styled.button`
         transition: all 0.3s ease;
     }
 `;
-
-const Contact = ({ onClose }) => {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [message, setMessage] = useState("");
-
-    const [isSent, setIsSent] = useState(false);
-    const form = useRef();
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        // Perform the necessary actions with the form data (e.g., send email, store in database)
-
-        emailjs
-            .sendForm(
-                "service_1lawyoh",
-                "template_lpw7uh3",
-                form.current,
-                "zHGUpt4DCaixhk0i5"
-            )
-            .then(
-                (result) => {
-                    document.getElementById("contact_form").reset();
-                    setIsSent(true);
-                    alert("Message sent successfully! 😄");
-                },
-                (error) => {
-                    console.error(error);
-                    setIsSent(false);
-                }
-            );
-
-        // Clear the form fields
-        setName("");
-        setEmail("");
-        setMessage("");
-    };
-
-    return (
-        <PopupBoxContainer>
-            <CloseButton onClick={onClose}>
-                {" "}
-                <XCircle size={48} />{" "}
-            </CloseButton>
-            <ContactFormContainer>
-                <form
-                    onSubmit={handleSubmit}
-                    id="contact_form"
-                    ref={form}
-                    method="POST"
-                    target="_blank">
-                    <Label htmlFor="name">Name</Label>
-                    <InputField
-                        type="text"
-                        id="name"
-                        name="from_name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="Enter your name"
-                        required
-                    />
-
-                    <Label htmlFor="email">Email</Label>
-                    <InputField
-                        type="email"
-                        id="email"
-                        name="from_email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Enter your email"
-                        required
-                    />
-
-                    <Label htmlFor="message">Message</Label>
-                    <TextArea
-                        id="message"
-                        name="message"
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        placeholder="Type your message"
-                        required></TextArea>
-
-                    <SubmitButton type="submit">
-                        <p>Send</p>
-                        <Send size={22} />
-                    </SubmitButton>
-                </form>
-            </ContactFormContainer>
-        </PopupBoxContainer>
-    );
-};
 
 export default Contact;

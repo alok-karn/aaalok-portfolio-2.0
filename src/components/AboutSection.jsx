@@ -59,7 +59,7 @@ const AboutSection = () => {
     return (
         <div className="about_container">
             <Bounce>
-                <h1>
+                <h1 className="header">
                     Bringing ideas to life through <br />
                     <span
                         onMouseEnter={handleMouseEnter}
@@ -78,12 +78,8 @@ const AboutSection = () => {
             </Bounce>
 
             <div className="my_info_container">
-                {/* <div className="image_container">
-                    <img src={MY_DP} alt="my-profile" />
-                </div> */}
-
-                {/* <h1>Hi, there!</h1> */}
-                {/* <SectionTitle title="HEY THERE" subtitle="my name is alok" /> */}
+                <h1 className="text-lg font-bold text-gray-950">What I know</h1>
+                <div className="skill_box"></div>
             </div>
         </div>
     );
